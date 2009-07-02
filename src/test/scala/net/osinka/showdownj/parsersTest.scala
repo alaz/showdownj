@@ -30,9 +30,10 @@ trait SyntaxSpec extends TestUtils {
             }
             "parse more complex Markdown" in {
                 val markdownSource = textFromResource("test1.md")
-                val supposedResult = textFromResource("test1.txt")
+                val supposedResult = textFromResource("test1.txt").map{x => xmlWrap(x)}
 
-                markdownSource.map(parser.convert(_)) must be_==(supposedResult)
+                markdownSource.map(x => xmlWrap(parser.convert(x))) must beSome[scala.xml.Elem] .
+                    which{ _ must ==/(supposedResult.get) }
             }
         }
     }

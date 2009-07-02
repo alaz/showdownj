@@ -3,9 +3,15 @@ package net.osinka.showdownj.test
 trait TestUtils {
     import java.io._
 
+    def xmlWrap(s: String) = scala.xml.XML.loadString(
+        """<?xml version="1.0" encoding="UTF-8"?>
+<root>
+""" + s.trim + "\n</root>"
+    )
+
     def textFromResource(r: String): Option[String] =
         readContents(getClass.getClassLoader.getResource(r)) .
-            map { bytearr => new String(bytearr, "UTF-8") }
+        map { bytearr => new String(bytearr, "UTF-8").trim }
 
     def readContents(url: java.net.URL): Option[Array[Byte]] = {
         val in = url.openStream
