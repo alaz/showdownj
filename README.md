@@ -1,9 +1,9 @@
 ## Project
 This tiny project is aimed to investigate ways of processing of [Markdown][] markup
-language for Java projects. It was inspired by the article of Brian Carper
+language for Scala projects. It was inspired by the article of Brian Carper
 ["Clojure and Markdown (and Javascript and Java and...)"][clojs]
 
-The project provides a trivial API to process Markdown markup based on three
+The project provides a trivial Scala API to process Markdown markup based on three
 implementations:
 
 * [MarkdownJ][] is a pure Java library
