@@ -7,16 +7,17 @@ language for Java projects. It was inspired by the article of Brian Carper
 The project provides a trivial API to process Markdown markup based on three
 implementations:
 
-  - [markdownj] is a Java library
-  - [showdownj] is a JavaScript implementation of Markdown, so it's possible to call
+  - [markdownj] is a pure Java library
+  - [showdown] is a JavaScript implementation of Markdown, so it's possible to call
 it from Java using JavaScript implementations (this is the way Brian Carper proposed).
 I chose
     - [Mozilla Rhino][rhino] and
     - [Java6 Scripting][java6] (which is basically Rhino, but without
 
+   [Markdown]: http://daringfireball.net/projects/markdown/
    [clojure-js]: http://briancarper.net/blog/clojure-and-markdown-and-javascript-and-java-and
-   [markdownj]: http://code.google.com/p/markdownj/ "MarkdownJ"
-   [showdownj]: http://attacklab.net/showdown/
+   [markdownj]: http://code.google.com/p/markdownj/
+   [showdown]: http://attacklab.net/showdown/
    [rhino]: http://www.mozilla.org/rhino/
    [java6]: http://java.sun.com/javase/6/docs/api/javax/script/package-summary.html
 
