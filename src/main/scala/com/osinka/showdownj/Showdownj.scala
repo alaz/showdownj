@@ -7,7 +7,7 @@
  * http://www.javalobby.org/java/forums/t87870.html
  */
 
-package net.osinka.showdownj
+package com.osinka.showdownj
 
 import scala.xml.{XML, Elem}
 

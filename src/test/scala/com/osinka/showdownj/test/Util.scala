@@ -1,4 +1,4 @@
-package net.osinka.showdownj.test
+package com.osinka.showdownj.test
 
 trait TestUtils {
     import java.io._

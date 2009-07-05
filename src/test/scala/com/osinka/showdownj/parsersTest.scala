@@ -1,4 +1,4 @@
-package net.osinka.showdownj
+package com.osinka.showdownj
 
 import org.specs._
 import org.specs.runner._
@@ -8,7 +8,7 @@ class parsersTest extends JUnit4(parsersSpec) with Console
 object parsersRunner extends ConsoleRunner(parsersSpec)
 
 object parsersSpec extends Specification with SyntaxSpec {
-    import net.osinka.showdownj.{ShowdownConfig, ShowdownImplJava6}
+    import com.osinka.showdownj.{ShowdownConfig, ShowdownImplJava6}
 
     include(
         doParserTest("Java6", new ShowdownImplJava6 with ShowdownConfig),

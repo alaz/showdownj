@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.osinka</groupId>
+    <groupId>com.osinka</groupId>
     <artifactId>showdownj</artifactId>
     <version>1.0</version>
     <name>ShowdownJ</name>
@@ -110,7 +110,7 @@
                         <launcher>
                             <!-- mvn scala:run -Dlauncher=benchmark -->
                             <id>benchmark</id>
-                            <mainClass>net.osinka.showdownj.benchmark.benchmark</mainClass>
+                            <mainClass>com.osinka.showdownj.benchmark.benchmark</mainClass>
                             <args>
                                 <arg>501</arg>
                             </args>
@@ -118,6 +118,29 @@
                     </launchers>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>bundle-manifest</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>manifest</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+            <!-- add the generated manifest to the archive -->
+                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>

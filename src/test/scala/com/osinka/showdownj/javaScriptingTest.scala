@@ -1,4 +1,4 @@
-package net.osinka.showdownj
+package com.osinka.showdownj
 
 import org.specs._
 import org.specs.runner._

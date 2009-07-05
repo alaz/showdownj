@@ -1,4 +1,4 @@
-package net.osinka.showdownj.benchmark
+package com.osinka.showdownj.benchmark
 
 import scala.testing.Benchmark
 import org.specs.util.SimpleTimer
@@ -34,7 +34,7 @@ object benchmark {
 }
 
 import scala.testing._
-import net.osinka.showdownj.test.TestUtils
+import com.osinka.showdownj.test.TestUtils
 abstract class MarkdownBenchmark(override val prefix: String) extends Benchmark with TestUtils with SUnit.Assert {
     def parser(s: String): String
 
@@ -56,13 +56,13 @@ object markdownj extends MarkdownBenchmark("markdownj") {
 }
 
 object rhino extends MarkdownBenchmark("rhino") {
-    import net.osinka.showdownj._
+    import com.osinka.showdownj._
     val parserImpl = new ShowdownImplRhino with ShowdownConfig
     def parser(x: String) = parserImpl.convert(x)
 }
 
 object java6 extends MarkdownBenchmark("java6") {
-    import net.osinka.showdownj._
+    import com.osinka.showdownj._
     val parserImpl = new ShowdownImplJava6 with ShowdownConfig
     def parser(x: String) = parserImpl.convert(x)
 }
