@@ -9,7 +9,9 @@ implementations:
 * [Showdown][] is a JavaScript implementation of Markdown, so it's possible to call
   it from Java using JavaScript implementations (this is the way Brian Carper proposed).
   I chose
-  * [Mozilla Rhino][rhino] and
+  * [Mozilla Rhino][rhino]. Rhino permits to run JS on-the-fly and to compile it.
+    As Showdown JavaScript is static, I compile it on the first run and use compiled
+    function on the subsequent runs.
   * [Java6 Scripting][java6] (which is basically Rhino, according to [this article][j6scripts])
 
 ### Benchmark
@@ -20,9 +22,12 @@ reference one.
 
 Average time to process long Markdown document (Markdown syntax description):
 
-  * Java6 = 314 ms
-  * Rhino = 316 ms
-  * MarkdownJ = 187 ms
+  * Java6 = 322 ms
+  * Rhino = 312 ms
+  * MarkdownJ = 183 ms
+
+You may notice there is almost no difference between "compiled function" performance
+of Rhino and usual Java6 scripting.
 
 Tests run with JDK 1.6 on MacBookPro 2.53GHz
 

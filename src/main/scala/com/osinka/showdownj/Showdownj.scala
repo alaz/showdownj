@@ -46,7 +46,6 @@ trait ShowdownImplHelpers {
 abstract class ShowdownImplRhino extends ShowdownBase with ShowdownImplHelpers {
     import org.mozilla.javascript._
 
-    @throws(classOf[java.io.FileNotFoundException])
     def convert(markdownString: String): String = contextFactory.call( new ContextAction() {
                 @throws(classOf[java.io.FileNotFoundException])
                 def run(ctx: Context): AnyRef = {
@@ -54,14 +53,11 @@ abstract class ShowdownImplRhino extends ShowdownBase with ShowdownImplHelpers {
                 }
             } ).toString
 
-    @throws(classOf[java.io.FileNotFoundException])
     lazy val func = contextFactory.call(init).asInstanceOf[Function2[Context, String, AnyRef]]
 
     lazy val contextFactory: ContextFactory = new ContextFactory()
 
-    @throws(classOf[java.io.FileNotFoundException])
     private object init extends ContextAction {
-        @throws(classOf[java.io.FileNotFoundException])
         def run(ctx: Context): AnyRef = scriptFileReader match {
             case None =>
                 throw new java.io.FileNotFoundException("Script " + scriptName + " could not be opened")
@@ -76,8 +72,6 @@ abstract class ShowdownImplRhino extends ShowdownBase with ShowdownImplHelpers {
 }
 
 abstract class ShowdownImplJava6 extends ShowdownBase with ShowdownImplHelpers {
-    @throws(classOf[java.io.FileNotFoundException])
-    @throws(classOf[RuntimeException])
     def convert(markdownString: String): String = showdownConverter(markdownString).toString
 
     import javax.script._
@@ -85,8 +79,6 @@ abstract class ShowdownImplJava6 extends ShowdownBase with ShowdownImplHelpers {
     lazy val scriptManager = new ScriptEngineManager()
     lazy val jsEngine      = legacy(scriptManager.getEngineByName("JavaScript"))
 
-    @throws(classOf[java.io.FileNotFoundException])
-    @throws(classOf[RuntimeException])
     lazy val showdownConverter = (scriptFileReader, jsEngine) match {
         case (None, _) =>
             throw new java.io.FileNotFoundException("Script " + scriptName + " could not be opened")
