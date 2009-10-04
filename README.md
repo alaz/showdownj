@@ -1,4 +1,3 @@
-## Project
 This tiny project is aimed to investigate ways of processing of [Markdown][] markup
 language for Scala projects. It was inspired by the article of Brian Carper
 ["Clojure and Markdown (and Javascript and Java and...)"][clojs]
@@ -18,6 +17,14 @@ Along with the library you may find a simple benchmark comparing all three metho
 described above. Do not trust absolute numbers blindly, as every run does Markdown
 source processing, transformation to XML and then compares resulting XML to the
 reference one.
+
+Average time to process long Markdown document (Markdown syntax description):
+
+  * Java6 = 314 ms
+  * Rhino = 316 ms
+  * MarkdownJ = 187 ms
+
+Tests run with JDK 1.6 on MacBookPro 2.53GHz
 
 #### Special note for Apple VM
 If you have trouble running JavaScript engine in Java6 under Mac OSX,
